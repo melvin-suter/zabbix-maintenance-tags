@@ -150,9 +150,11 @@ for host in api.post("host.get",{"output":["hostid","host"],"selectTags":"extend
         api.post("maintenance.delete", [maintenanceID])
 
         # Remove all maintenance tags
+        tempCurrentTags = currentTags
         for tag in currentTags:
             if(tag["tag"] in ["maintenance-id","maintenance-start","maintenance-end", "maintenance"]):
-                currentTags.remove(tag)
+                tempCurrentTags.remove(tag)
+        currentTags = tempCurrentTags
 
         # Update Tags
         api.post("host.update",{"hostid": host["hostid"], "tags": currentTags})
@@ -165,9 +167,11 @@ for host in api.post("host.get",{"output":["hostid","host"],"selectTags":"extend
         period = int((end-now).total_seconds())
 
         # Remove tags
+        tempCurrentTags = currentTags
         for tag in currentTags:
             if(tag["tag"] in ["maintenance-start", "maintenance-end", "maintenance-extend"]):
-                currentTags.remove(tag)
+                tempCurrentTags.remove(tag)
+        currentTags = tempCurrentTags
 
         # re-add tags with correct values
         currentTags.append({"tag": "maintenance-start", "value": now.strftime("%Y-%m-%d %H:%M:%S")})
