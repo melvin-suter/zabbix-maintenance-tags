@@ -181,8 +181,6 @@ for host in api.post("host.get",{"output":["hostid","host"],"selectTags":"extend
             data["maintenance_type"] = 0
         r = api.post("maintenance.update",data)
 
-        currentTags.append({"tag": "maintenance-id", "value": str(r["maintenanceids"][0])})
-
         # Update Tags
         api.post("host.update",{"hostid": host["hostid"], "tags": currentTags})
 
