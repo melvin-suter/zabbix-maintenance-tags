@@ -1,0 +1,5 @@
+{
+    "zabbix_username": "Admin",
+    "zabbix_password": "zabbix",
+    "zabbix_url": "https://127.0.0.1/api_jsonrpc.php"
+}
