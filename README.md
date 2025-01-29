@@ -35,7 +35,7 @@ And create a cron file under `/etc/cron.d/zabbix-maintenance` like this:
 1. delete the tag `maintenance`
 1. after the script is run, all `maintenance-*` tags will be deleted and the maintenance window as well
 
-**Extending maintenance:**
+**Extending/Shorten maintenance:**
 
 1. set the tag `maintenance-extend` and update the `maintenance` tag with the new value
-1. after the script runs, the host will be in maintenance for the amount of time specified in `maintenance`
+1. after the script runs, the host will be in maintenance for the amount of time specified in `maintenance` from now

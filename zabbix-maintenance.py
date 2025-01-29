@@ -150,7 +150,7 @@ for host in api.post("host.get",{"output":["hostid","host"],"selectTags":"extend
         api.post("maintenance.delete", [maintenanceID])
 
         # Remove all maintenance tags
-        tempCurrentTags = currentTags
+        tempCurrentTags = currentTags.copy()
         for tag in currentTags:
             if(tag["tag"] in ["maintenance-id","maintenance-start","maintenance-end", "maintenance"]):
                 tempCurrentTags.remove(tag)
@@ -167,7 +167,7 @@ for host in api.post("host.get",{"output":["hostid","host"],"selectTags":"extend
         period = int((end-now).total_seconds())
 
         # Remove tags
-        tempCurrentTags = currentTags
+        tempCurrentTags = currentTags.copy()
         for tag in currentTags:
             if(tag["tag"] in ["maintenance-start", "maintenance-end", "maintenance-extend"]):
                 tempCurrentTags.remove(tag)
